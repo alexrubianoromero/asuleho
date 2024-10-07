@@ -7,66 +7,101 @@ require_once($raiz.'/traductor/models/TraductorModel.php');
 class traductorView
 {
  protected $model; 
- protected $tipoContriModel; 
+//  protected $tipoContriModel; 
 
  public function __construct()
  {
     $this->model= new TraductorModel(); 
     // $this->tipoContriModel= new TipoContribuyenteModel(); 
  }   
- public function clientesMenu($clientes)
- {
-    
-    ?>
-    <div style="padding:5px;">
-        <div class="row">
-            <div class="col-lg-3">
-                <button 
-                data-bs-toggle="modal" 
-                data-bs-target="#modalNuevoCliente"
-                class="btn btn-primary" 
-                onclick="formuNuevoCliente();"
-                >Nuevo Cliente</button>
+ 
+
+ public function traductorMenu()
+    {
+        ?>
+        <div  style="padding:5px;">
+            <!-- <div class="col-lg-2"></div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2"></div> -->
+            <div  class="row" id="botones" class="mt-3 " >
+                <!-- <div class="col-lg-2">
+                    <button type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalNuevoHardware"
+                    class="btn btn-primary " 
+                    onclick="formuNuevoHardware()"
+                    >
+                    Nuevo Hardware
+                    </button>
+                </div> -->
+                <div class="col-lg-2">
+                    <button type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalSubirArchivo"
+                    class="btn btn-primary  float-right" 
+                    onclick="formularioSubirArchivo()"
+                    >
+                        Subir Archivo
+                    </button>
+                </div>
+             
+
             </div>
-            <div class="col-lg-3">
-                <select id = "idCliente" name="idCliente" onchange="listarClienteFiltradoDesdeClientes();" class="form-control" >
-                       <option value="-1">SeleccionarCliente</option>
-                       <?php  
-                           foreach($clientes as $cliente)
-                           {
-                               echo '<option value ='.$cliente['idcliente'].'>'.$cliente['nombre'].'</option>'; 
-                           }
-                       ?>
-                </select>
-            </div>
+          
+            <div id="divResultadosTraductor" class="mt-3">
+                <?php  
+                     $this->mostrarInfoTraductor();  
+                        
+                ?>
+                </div>
+                
+                
+                
+                <?php  
+            // $this->modalInventario();  
+            // $this->modalInventarioMostrar();  
+            $this->modalSubirArchivo();  
+            // $this->modalHardwareMostrar();  
+            // $this->modalAgregarRam();  
+            // $this->modalNuevoHardware();  
+            // $this->modalDividirRam();  
+            // $this->modalFiltros();  
+            ?>
 
+            
+            
         </div>
-        <div id="div_resultados_clientes" class="mt-3">
-               <?php  $this->mostrarCLientes($clientes);   ?>
-        </div>
+        <?php
+    }
 
-        <?php   $this->modalNuevoCliente(); ?>
-    </div>
-    <?php
- }
 
- public function mostrarCLientes($clientes)
+
+ public function mostrarInfoTraductor()
  {
     // $clientes = $this->model->traerClientes(); 
     echo '<table class="table table-striped">';
         echo '<tr>'; 
-        echo '<th>Nombre/Razon Social</th>';
-        echo '<th>Nit</th>';
-        echo '<th>Telefono</th>';
-        echo '<th>Correo</th>';
-        echo '<th>Direccion</th>';
-        echo '<th>Ciudad</th>';
-        echo '<th>TipoCont.</th>';
-        echo '<th>Sede.</th>';
+        echo '<th>Tipo Nota Contable</th>';
+        echo '<th>Codigo_c</th>';
+        echo '<th>nconcep</th>';
+        echo '<th>cuentasWorldOffice</th>';
+        echo '<th>naturaleza</th>';
+        echo '<th>empresa</th>';
+        echo '<th>periodo.</th>';
+        echo '<th>documentoNumero.</th>';
+        echo '<th>fechaFin	.</th>';
+        echo '<th>nota1.</th>';
+        echo '<th>documento.</th>';
+        echo '<th>tipoDocumento.</th>';
+        echo '<th>cedulaCarga.</th>';
+        echo '<th>nit.</th>';
+        echo '<th>sucursal.</th>';
+        echo '<th>nota2.</th>';
         echo '</tr>';
         foreach($clientes as $cliente)
         {
-            $tipoCont =  $this->tipoContriModel->traerTipoId($cliente['idTipoContribuyente']);
+            // $tipoCont =  $this->tipoContriModel->traerTipoId($cliente['idTipoContribuyente']);
             echo '<tr>'; 
             echo '<td>'.$cliente['nombre'].'</td>'; 
             echo '<td>'.$cliente['identi'].'</td>'; 
@@ -76,10 +111,75 @@ class traductorView
             echo '<td>'.$cliente['ciudad'].'</td>'; 
             echo '<td>'.$tipoCont['descripcion'].'</td>'; 
             echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
+            echo '<td>'.$cliente['sede'].'</td>'; 
             echo '</tr>';
         }
     echo '</table>';   
  }
+
+ public function modalSubirArchivo()
+ {
+     ?>
+         <!-- Modal -->
+         <div class="modal fade" id="modalSubirArchivo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+             <div class="modal-header">
+                 <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body" id="modalBodySubirArchivo">
+                 
+             </div>
+             <div class="modal-footer">
+                 <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hardwareMenu();" >Cerrar</button>
+                 <button  type="button" class="btn btn-primary"  id="btnEnviar"  onclick="realizarCargaArchivo();" >SubirArchivo</button>
+             </div>
+             </div>
+         </div>
+         </div>
+
+     <?php
+ }
+
+ public function formularioSubirArchivo()
+ {
+     // echo 'subir archivo '; 
+     ?>
+     <div id="div_cargue_archivo">
+             <input name="imagen" id="imagen" type="file">
+             <br><br><br><br>
+             <!-- <button onclick="procesarformu();" >Procesar</button> -->
+             <br><br>
+             <!-- <button id="btnEnviar">Enviar!!</button> -->
+             <!-- </form> -->
+             <div id="div_muestre_resultado"></div>
+             <span id="demo"></span>
+     </div>
+     
+     <?php
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
  public function modalNuevoCliente()
  {
      ?>
@@ -147,7 +247,7 @@ class traductorView
                  <select id="idTipoContribuyente" class ="form-control">
                      <option value ="">Seleccione...</option>
                      <?php
-                          $tipoContribuyentes =  $this->tipoContriModel->traerTipoContribuyente();
+                        //   $tipoContribuyentes =  $this->tipoContriModel->traerTipoContribuyente();
                          foreach($tipoContribuyentes as $tipoContribuyente)
                          {
                              echo '<option value ="'.$tipoContribuyente['id'].'" >'.$tipoContribuyente['descripcion'].'</option>';

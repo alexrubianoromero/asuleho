@@ -1,7 +1,7 @@
 <?php
 $raiz = dirname(dirname(dirname(__file__)));
 require_once($raiz.'/traductor/views/traductorView.php'); 
-require_once($raiz.'/traductor/models/traductorModel.php'); 
+require_once($raiz.'/traductor/models/TraductorModel.php'); 
 // require_once($raiz.'/partes/models/PartesModel.php'); 
 // require_once($raiz.'/movimientos/models/MovimientoParteModel.php'); 
 
@@ -22,10 +22,19 @@ class traductorController
             die();
         }
         $this->view = new traductorView();
-        $this->model = new traductorModel();
+        $this->model = new TraductorModel();
         // $this->partesModel = new PartesModel();
         // $this->MovParteModel = new MovimientoParteModel();
 
+        if($_REQUEST['opcion']=='traductorMenu')
+        {
+            $this->view->traductorMenu();
+        }
+
+        if($_REQUEST['opcion']=='formularioSubirArchivo')
+        {
+            $this->view->formularioSubirArchivo(); 
+        }
         if($_REQUEST['opcion']=='listarClientes')
         {
             $this->listarClientes();
@@ -37,10 +46,6 @@ class traductorController
         if($_REQUEST['opcion']=='listarClienteFiltradoDesdeClientes')
         {
             $this->listarClienteFiltradoDesdeClientes($_REQUEST);
-        }
-        if($_REQUEST['opcion']=='clientesMenu')
-        {
-            $this->clientesMenu();
         }
 
         if($_REQUEST['opcion']=='formuNuevoCliente')

@@ -49,7 +49,7 @@
                     {
                     ?>
                     <li class="nav-item">
-                    <a style="cursor:pointer;" class="nav-link" onclick="inventarios();">
+                    <a style="cursor:pointer;" class="nav-link" onclick="traductor();">
                             <!-- <i class="nav-icon fas fa-th"></i> -->
                             <p>
                                 Traductor
