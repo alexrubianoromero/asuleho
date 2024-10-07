@@ -1,0 +1,47 @@
+querys de limpieza de la base de datos 
+
+
+truncate asignacionTecnicoPedido; 
+truncate asociadoItemInicioPedidoHardwareOparte;
+truncate cargue_nombre;
+truncate cliente0;
+truncate hardware;
+truncate inventario;
+truncate itemPedido;
+truncate itemsInicioPedido;
+truncate movimientosHardware;
+truncate movimientosPartes;
+truncate pagos;
+truncate partes;
+truncate pedidos;
+truncate sucursales;
+
+
+
+
+
+--truncate subtipoParte
+
+update itemsInicioPedido set asignado = 0;
+
+
+
+update itemsInicioPedido set idHardwareOParte = 0 ; 
+
+truncate pedidos;
+truncate itemsInicioPedido;
+truncate asignacionTecnicoPedido;
+truncate pagos;
+update hardware set idEstadoInventario = 0, idAsociacionItem=0;
+
+
+
+
+delete  from pedidos;
+delete from itemsInicioPedido;
+delete from asignacionTecnicoPedido;
+delete from asociadoItemInicioPedidoHardwareOparte;
+
+//quitar la asignacion de un tecnico a un itemInicial Pedido 
+
+update itemsInicioPedido set asignado='0', idTecnico = '0'  where id = '10'

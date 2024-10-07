@@ -1,0 +1,242 @@
+lo del lote para el precio de las partes 
+lo del precio de la parte cuando se quita un disco 
+boton de quitar serial par desligarlo de un pedido desde la parte del tecnico
+colocar el estado en las hojas de vida 
+boton dado de baja estado 3
+
+pendientes 
+verificar el proceso de cambio de bodega colocar filtro de solo dados de baja 
+
+cambios realizados 
+
+Se coloca el estado en hojas de vida 
+Se crea funcionalidad para que cuando se agregue un item de hardware a un inventario de una cambie el estado
+al estado del item 1 vendido , 2 rentado y asi quedara en la tabla de hardware 
+
+En que momento se debe aplicar el cambio de bodega 
+solo para hardware 
+cuando se realize la asignacion del hardware al item del pedido 
+
+termine los filtros de  hardware 
+ahora voy con los filtros de partes estoy en eso 
+
+estoy en los filtros de partes en el de caracteristicas o capacidad 
+ realize el filtro por cliente en pedidos y filtro por cliente en clientes 
+
+ pendiente por revisar las observaciones del pedido 
+ inicio los reportes 
+
+ revisiones pendientes 
+ verificar lo de las observaciones de los pedidos 
+ verificar la forma como se van a agregar el inventario a los items del pedido por ejemplo en el caso que sean varios hardware o partes 
+
+preguntar eso 
+definir bien el proceso del pedido y sus implicaciones 
+verificar que pasa cuando se quita un item si se reestablecen los valores del hardware o parte 
+
+Sigo con la mejora en la parte visual de mostrar los items del tecnico por pedido 
+
+tener encuenta cuando se vende o alquila un item que se transmita a las partes 
+tener en cuenta al quitar un item de un pedido desasociar el hardware del iditem en la tabla de hardware y cambiar el estado 
+tener en cuenta que al asoiciar un hardware sus partes tambien deben quedar en el mismo estado 
+y de esta manera reversar cuando se quite el hardware 
+
+* se debe tgener en cuenta que cuaqndo se agregue un hardware a una parte se grabe el id de la tabla asociacion no el it del item 
+porque puede tener varios hardware asociados 
+
+tener en cuenta la opcion de bodega 
+
+limpiar la base de datos 
+en que parte se ingresa el valor al que se vendio un producto
+revisar lo del informe financiero
+revisar como hago para que se actualice el estado en la ventana de estados de pedidos pendientes cuando actualizo el estado 
+
+generar aviso cuando no halla informacion en los informes 
+
+
+
+
+boton de quitar un serial 
+adicionar al reporte de equipos el tecnico que lo alisto 
+ocultar         
+
+quitar las lineas de los cuadros de oc
+colocar otra casilla de velocidad
+ajustar el reporte de hojas de vida 
+COLOCAR COLUMAN PRECIO DE VENTA EN EL FINANCIERO 
+que el valor de venta que asigne sea el valor unitario que quedo en cada item inicio 
+tener este valor en cuenta cuando se agreguen items para que tome este valor como el precio de venta 
+pendiente  lo llene alla en la tabla de asociadoItemInicioPedidoHardwareOparte en el campo precioVenta 
+
+revisar porque no coloco el precio de venta en la tabla de asociacion para el serial 7956
+
+revisar porque no grabo el precio minimo de venta para el hardware
+no se elimino el item pedido cuando elimine el pedido revisar 
+coregir el eliminar pedido que lo elimine totalmente 
+revisar porque en el reporte de estado de equipos no muestra correctamente el estado cuando queda en renta y no muestra el tecnico 
+revisar porque cuando elimine el item del pedido no se refleja el cambvio den reporte de equipos 
+al eliminar item debe limpiar el estado del hardware y ademas el idEstado asociado 
+y limpiar todo lo quye este asociado a este iditem en asociado 
+revisar que se cree el movimiento de la eliminacion del itemInicio del pedido 
+ellos digeron que unicamente para venta 
+
+revisar el idSucursal con el que queda grabado el cargue
+drop down de ubicacion y procesador con opcion de cambio el resto que queden fijas 
+configurar boton nuevo solo para usuario administrador
+
+en componentes habilitar las dos columnas de texto 
+-quital la columna de costo 
+-caracteristicas y especificaciones deben ser dos campos independientes
+
+
+el item debe quedar divido para cada unidad osea cuando se este creando el item de pedido  tomara la cantidad total 
+y lo dividira por el numero de partes o hardwares
+cada serial con sul valor de venta unitario que salga en el reporte financiero en valor real de venta 
+
+**cuando se agreguen o disminuya la cantidad de  componenetes  agregar un campo de observacion para mayor informacioon de porque se realizo 
+**un movimiento de partes y tambien la cantidad que causo el movimiento
+**revisar el drop down de las condiciones del hardware cuando se consulta 
+*ubicacion va con dropdown em hardware
+**las condiciones tambien tienen dropdown y ambos vienen de la misma tabla 
+**namda es modificabvle excepto
+**procesador solo para algunos perfiles y con dropdown
+*impotration on oes modificable ni lote factura
+**el numero de devoluciones o sdk se incrementara cuando se realize una devolucion haciendo clieck en el boton devoluciones 
+ por que en hojas de vida no salio el serial que busque 
+ **revisar porque el buscador no me trajo los seriales en hojas de vida 
+
+
+**agregar tambien el numero que se agrego o se quito en lo movimientos de partes 
+
+**quitar boton de devolver en el historial de hojas de vida 
+**grabar el valor de sku del excel en el campo comodin
+**visualmente mostrara el  sku con el comidin 
+
+revisar que el tecnico solo pueda ver sus pedidos 
+
+los valores de hardware seran restringidos a ciertos perfiles 
+**el modelo cuando se esta creadno del item de inicio pedido solo texto
+
+ 
+
+ cuando el tecnico termine el pedido  debe salir ese item de su pantalla
+ y que queden en pedidos completados (como un historial de sus pedidos )
+ cuando el estado sea entregado hay pasa a pedidos completados 
+
+
+3 niveles de permisos 
+
+permisos esta pendiente 
+
+solo un usuario que va a poder agregar y quitar
+
+en que momento se le cambia el estado a un pedido 
+com ose maneja eso cuales son los estados de un pedido 
+
+itemsInicioPorCompletar
+
+verificar que muestre pedidos solo a los que etan logueados como tecnicos
+no se va a manejar un estado de pedido sino estado de item 
+y coneste se mostraran los items completados o por completar pero solo para el tecnico que este logueado en ese momento 
+
+**en hojas de vida mostrar las caracteristicas de un serial pero no editable solo informacion
+
+**quitar el filtro de generacion en filtros de hardware  revision general de filtros solo los de bodega debe traer
+**y colocar el filtro de ubicacion
+**ajustar el ver mas de hojas de vida que no puedan cambiar las dos condiciones solo de lectura 
+**filtro importacion solo debe traer lel campo de inportacion pero de los hardwares 
+**el campo proveedor solo se busca para partes con serial en el caso de los filtors 
+**almacenar la sucursal del usuario cuando se crea un item inicio pedido 
+**cambiar los titulode los filtros en inventario
+**revisar como se puede indicar la prioridad con la que quedo creado el item 
+**Ajustar los valores por defecto cuando se escogen las opciones de agregar un item inicio
+
+**cambiar costo a alfanumerico y utilizarlo como especificaciones en componentes
+**ajustar hojas de vida para que muestre todos los seriales independientes de la bodega 
+**revisar como esta guardando los valores de ram en la tabla de hardware (las condiciones con ñ o simbolos raros no pasan  )
+**como hace el sistema para traer el valor de la ram del segundo serial (el id que guarda en la tabla de hardware para ram  es el de subtipoParte)
+**para revisar lo de la ram y disco en el informe se debe revisar como esta grabando la ram que trae el hardware
+--revisar como se procesa que quite un componente 
+**revisar que el componente que se crea quede con la sucursal del usuario (se reviso y si queda la sucursal grabada cuando se crea la parte )
+--revisar como queda grabado el componente que se quita
+--garantizar que cuando se quite un componente quede grabado el registro en partes con la cantidad que se quito, si no existe se debe crear el registro 
+que quede registrado en partes con el id de la subparte  
+ 
+y que agregue un componente 
+
+
+**revisar en reporte financiero que salgan las columasn de ram y disco 
+**en el reporte financiero al lado de oc la fecha en que se creo la oc 
+
+**el reporte de estado de equipo es el mismo reporte financiero pero solo hasta al columna estado inlcuido ademas que 
+**se relacionel tecnico que lo alisto 
+
+**en el reporte de ventas sacar resumido el valor total de toda la oc y que salga una sola vez 
+**no importa que tenga variosa items  y que muestre el saldo de esa oc
+
+
+en reporte de estado de equipo solocar otra opcion para ver lo que esta en bodega  pero solo de la bodega ligada al usuario 
+opcion tablero pedidos 
+
+
+
+revisar las opciones de jefe de bodega
+revisar que jefe de bodega no ´pueda cambiar el estado de un item 
+
+el tecnico si puede cambiar el estado del item pero no puede agregar seriales
+
+*filtros de pulgadas y tipos de producto
+**chasis o tipo  
+**filtro sku
+
+**verificar que no coloque nada en ram y disco cuando se agrega un item al pedido que no tiene ram ni disco
+
+cotizar el vambio adicional para majear dos archivos 
+
+
+Tener en cuenta para desarrollo de cargue y descargue de archivos de devolucion y de movimiento 
+
+que almacene el usuario que realizo esta devolucion o movimiento manual 
+
+que en el movimiento que se crea de un serial que se le halla realizado una devolucion indique estado devuelto para ese movimiento 
+osea se marcara en el movimiento como tipo de movimiento 3 que es devolusion y asi se podra indicar que esta devuelto solo devuelto 
+que significa devuelto a bodega 
+
+cuando se creee un comentario manual hay si mostrara el estado en ql que se encuentre actualmente ose el de siempre el del item inicio 
+eh hojas de vida debe aparecer el usuario que realizo el movimiento o comentario 
+loo mejor es crear una columna donde se vea el usuario que realizao el movimiento 
+coocar una confirmacion de si esta seguro de realizar estaq devolucion
+
+formuCrearMovimientoManual
+
+pendientes 
+
+revisar que despues de devuelto el estado debe ser bodega
+colocar columna de usuario 
+
+
+columan especificaciones en componenetes osea el campo costo
+darle mas espacio a modelo en el pdf 
+se pueden achicar otra columasn como pulgadas disco ram 
+
+
+revisar filtro producto 
+control para no dejar subir dos veces el serial 
+restablecer la contraseña
+
+
+
+en hardware filtro de producto  que salgan todos los productos que hallan en esa columna
+
+tablas que faltaron por pasar 
+
+hardware 
+*subtipoParte
+	sucursales
+    tablaTemporalDividirMemoria
+    tipoContribuyente
+    tipoparte
+    tiposMovimientos
+    	ubicaciones
+        users
+        	usuarios
