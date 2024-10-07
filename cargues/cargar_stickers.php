@@ -43,6 +43,7 @@ echo '</pre>';
 //     $maximo_id = $arreglo_maximo_id_parte['maximo'];
 //     return $maximo_id; 
 // }
+
 ?>
 
 <h3>Seleccionar archivo Excel que contiene los tikets<br />
@@ -57,7 +58,9 @@ echo '</pre>';
  
         if($_FILES['file']['name'] != '')
         {
- 
+            
+            $traductorModel->limpiarTablaTraductor();
+            $traductorModel->limpiarTablaNombreArchivo();
            // require_once 'reader/Classes/PHPExcel/IOFactory.php';
 		   require_once '../Classes/PHPExcel/IOFactory.php';
  
@@ -177,11 +180,11 @@ echo '</pre>';
            // echo 'resultado'.$table;
 
         }
-		/*
-		echo '<pre>';
-		print_r($arreglo_mostrar);
-		echo '</pre>';
-		*/
+		
+		// echo '<pre>';
+		// print_r($arreglo_mostrar);
+		// echo '</pre>';
+		// die('llego hasta aca ');
 
         //////////////////////////////////////////////
 
@@ -189,10 +192,10 @@ echo '</pre>';
 		echo '<table border = "1">';
 		
 		$i = 1;
-        // die('amtes de preguntaer si esta vacio');
+        // die('antes de preguntar si esta  '.sizeof($arreglo_mostrar));
 		if (sizeof($arreglo_mostrar)> 0);
 					{
-                        // die('entro si encuentra info');
+                        // die('entro si encuentra  hhhhhhhhhhhhhhhhhhhhhh');
 						foreach ($arreglo_mostrar as $am)
 								{
                                     // die('entro aa leer el arreglo');
@@ -214,8 +217,8 @@ echo '</pre>';
                                         ,'".$am['I']."','".$am['J']."','".$am['K']."','".$am['L']."'
                                         ,'".$am['M']."','".$am['N']."','".$am['O']."','".$am['P']."'
                                     )"; 
-                                     die($sql); 
-                                    
+                                    //  die('llllllllllllllllllla consulta '.$sql); 
+                                     $consulta = mysql_query($sql,$conexion); 
 									$i++;
                                     // if($i==2){die(); }
 								}
@@ -226,24 +229,6 @@ echo '</pre>';
 		echo '</form>';		
          
         echo '<BR>IMPORTACION REALIZADA REGISTRADA BAJO EL NOMBRE DE ARCHIVO '.$nombre_archivo;
-        //////////////aqui se van a mostrar los cargues existentes en el sistema 
-        
-        /*
-        echo '<br><br>CARGUES EXISTENTES EN EL SISTEMA<br>';
-        $sql_archivos_cargados = "select * from $tabla54  where id_empresa = '".$_SESSION['id_empresa']."' and activo = 1 order by id_archivo desc";
-        $consulta_archivos_cargados = mysql_query($sql_archivos_cargados,$conexion);
-       echo '<table border = "1">';
-       while ($cargados = mysql_fetch_assoc($consulta_archivos_cargados))
-                {
-                    echo '<tr>';
-                    echo '<td>'.$cargados['nombre_archivo'].'</td>';
-                    echo '<td><a href ="../cargues/ver_registros_cargue.php?id_archivo='.$cargados['id_archivo'].'">Ver Contenido</a></td>';
-                    echo '<tr>';
-                }
-         echo '</table>';   
-        */ 
-
-        
 		?>
 		
 </div>

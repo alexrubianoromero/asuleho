@@ -17,29 +17,29 @@
 // }
 // const btnEnviar = document.querySelector("#btnEnviar");
 // const inputFile = document.querySelector("#imagen");
-function realizarCargaArchivo()
-{
-    // alert('cargue'); 
-    var inputFile = document.getElementById('imagen');
+// function realizarCargaArchivo123()
+// {
+//     // alert('cargue'); 
+//     var inputFile = document.getElementById('imagen');
 
-    if (inputFile.files.length > 0) {
-        let formData = new FormData();
-        formData.append("file", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
-        formData.append("opcion", 'cargarArchivo'); // En la posición 0; es decir, el primer elemento
-        // fetch("cargues/cargues.php", {
-        fetch("cargues/cargar_stickers.php", {
-            method: 'POST',
-            body: formData,
-        })
-            .then(respuesta => respuesta.text())
-            .then(decodificado => {
-                console.log(decodificado.archivo);
-                document.getElementById("div_cargue_archivo").innerHTML = 'Cargue Realizado!!';
-            });
-    } else {
-        alert("Selecciona un archivo");
-    }
-}
+//     if (inputFile.files.length > 0) {
+//         let formData = new FormData();
+//         formData.append("file", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
+//         formData.append("opcion", 'cargarArchivo'); // En la posición 0; es decir, el primer elemento
+//         // fetch("cargues/cargues.php", {
+//         fetch("cargues/cargar_stickers.php", {
+//             method: 'POST',
+//             body: formData,
+//         })
+//             .then(respuesta => respuesta.text())
+//             .then(decodificado => {
+//                 console.log(decodificado.archivo);
+//                 document.getElementById("div_cargue_archivo").innerHTML = 'Cargue Realizado!!';
+//             });
+//     } else {
+//         alert("Selecciona un archivo");
+//     }
+// }
 
 // const btnEnviar = document.querySelector("#btnEnviar");
 // const inputFile = document.querySelector("#imagen");

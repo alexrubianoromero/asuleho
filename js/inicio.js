@@ -140,6 +140,22 @@ function traductor()
     http.send('opcion=traductorMenu');
 
 }
+function integrin()
+{
+    const http=new XMLHttpRequest();
+    const url = './integrin/integrin.php';
+    http.onreadystatechange = function(){
+
+        if(this.readyState == 4 && this.status ==200){
+               document.getElementById("div_content_wrapper").innerHTML  = this.responseText;
+
+        }
+    };
+    http.open("POST",url);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send('opcion=integrinMenu');
+
+}
 
 function sucursales()
 {

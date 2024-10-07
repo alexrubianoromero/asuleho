@@ -41,9 +41,6 @@ function realizarCargaArchivo()
     }
 }
 
-
-
-
 function listarClientes()
 {
     //  alert('funcion javascript');

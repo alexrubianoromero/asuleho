@@ -5,7 +5,7 @@ $raiz =dirname(dirname(dirname(__file__)));
 
 require_once($raiz.'/conexion/Conexion.php');
 
-class TraductorModel extends Conexion
+class IntegrinModel extends Conexion
 {
     public function traerRegistrostraductor()
     {

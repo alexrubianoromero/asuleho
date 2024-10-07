@@ -1,10 +1,10 @@
 <?php
 $raiz = dirname(dirname(dirname(__file__)));
-require_once($raiz.'/traductor/models/TraductorModel.php'); 
+require_once($raiz.'/integrin/models/IntegrinModel.php'); 
 // require_once($raiz.'/subtipos/models/SubtipoParteModel.php'); 
 // require_once($raiz.'/marcas/models/MarcaModel.php'); 
 
-class traductorView
+class integrinView
 {
  protected $model; 
 //  protected $tipoContriModel; 

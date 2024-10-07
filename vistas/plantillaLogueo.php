@@ -80,6 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="pagos/js/pagos.js"></script>  
         <script src="reportes/js/reportes.js"></script>  
         <script src="traductor/js/traductor.js"></script>  
+        <script src="integrin/js/integrin.js"></script>  
         <script>
         function CargarContenido(pagina_php,contenedor)
         {
