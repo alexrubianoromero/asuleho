@@ -76,7 +76,7 @@
                     {
                     ?>
                     <li class="nav-item">
-                    <a style="cursor:pointer;" class="nav-link" onclick="hardwareMenuGenerarArchivo();">
+                    <a style="cursor:pointer;" class="nav-link" onclick="archivoWorldOffice();">
                             <!-- <i class="nav-icon fas fa-th"></i> -->
                             <p>
                                 Generar Archivo WordOffice

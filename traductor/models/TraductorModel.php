@@ -26,12 +26,13 @@ class TraductorModel extends Conexion
         $consulta = mysql_query($sql,$this->connectMysql());
     }
 
-    public function traerClienteFiltrado($idCliente)
+    public function traerTraducccionXCodigoC($codigo)
     {
-        $sql = "select * from cliente0  where idcliente = '".$idCliente."' ";
+        $sql = "select * from traductor  where codigo_c = '".$codigo."' ";
+        // die($sql); 
         $consulta = mysql_query($sql,$this->connectMysql());
-        $cliente = mysql_fetch_assoc($consulta);
-        return $cliente;
+        $traductor = mysql_fetch_assoc($consulta);
+        return $traductor;
     }
     public function traerClienteFiltrado2($idCliente)
     {
@@ -40,20 +41,7 @@ class TraductorModel extends Conexion
         $cliente = $this->get_table_assoc($consulta);
         return $cliente;
     }
-    public function grabarCliente($request)
-    {
-        $sql = "insert into cliente0  (nombre,identi,telefono,email,direccion,ciudad,idTipoContribuyente,sede)    
-            values ('".$request['nombre']."','".$request['nit']."','".$request['telefono']."'
-            ,'".$request['email']."'
-            ,'".$request['direccion']."'
-            ,'".$request['ciudad']."'
-            ,'".$request['idTipoContribuyente']."'
-            ,'".$request['sede']."'
-            ) ";
-        $consulta = mysql_query($sql,$this->connectMysql());
-        // $clientes = $this->get_table_assoc($consulta);
-        // return $clientes;
-    }
+   
 
     public function traerClienteId($id)
     {

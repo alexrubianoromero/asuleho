@@ -157,10 +157,10 @@ function integrin()
 
 }
 
-function sucursales()
+function archivoWorldOffice()
 {
     const http=new XMLHttpRequest();
-    const url = './sucursales/sucursales.php';
+    const url = './archivoWorldOffice/archivoWorldOffice.php';
     http.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status ==200){
@@ -170,7 +170,7 @@ function sucursales()
     };
     http.open("POST",url);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send('opcion=sucursalesMenu');
+    http.send('opcion=archivoWorldOffice');
 
 }
 function perfiles()
