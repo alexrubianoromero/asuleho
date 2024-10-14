@@ -7,24 +7,24 @@ require_once($raiz.'/conexion/Conexion.php');
 
 class IntegrinModel extends Conexion
 {
-    public function traerRegistrostraductor()
+    public function traerRegistrosIntegrin()
     {
-        $sql = "select * from traductor ";
+        $sql = "select * from integrin ";
         $consulta = mysql_query($sql,$this->connectMysql());
         $parametros = $this->get_table_assoc($consulta);
         return $parametros;
     }
 
-    public function limpiarTablaTraductor()
+    public function limpiarTablaIntegrin()
     {
-        $sql = "truncate traductor";
+        $sql = "truncate integrin";
         $consulta = mysql_query($sql,$this->connectMysql());
     }
-    public function limpiarTablaNombreArchivo()
-    {
-        $sql = "truncate cargue_nombre";
-        $consulta = mysql_query($sql,$this->connectMysql());
-    }
+    // public function limpiarTablaNombreArchivo()
+    // {
+    //     $sql = "truncate cargue_nombre";
+    //     $consulta = mysql_query($sql,$this->connectMysql());
+    // }
 
     public function traerClienteFiltrado($idCliente)
     {

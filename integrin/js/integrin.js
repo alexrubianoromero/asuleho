@@ -1,8 +1,8 @@
-function formularioSubirArchivo()
+function formularioSubirArchivoIntegrin()
 {
     // alert('funcion javascript');
     const http=new XMLHttpRequest();
-    const url = 'traductor/traductor.php';
+    const url = 'integrin/integrin.php';
     http.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status ==200){
@@ -11,13 +11,13 @@ function formularioSubirArchivo()
     };
     http.open("POST",url);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send('opcion=formularioSubirArchivo'
+    http.send('opcion=formularioSubirArchivoIntegrin'
     );
 
 }
 
 
-function realizarCargaArchivo()
+function realizarCargaArchivoIntegrin()
 {
     // alert('cargue'); 
     var inputFile = document.getElementById('imagen');
@@ -27,7 +27,7 @@ function realizarCargaArchivo()
         formData.append("file", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
         formData.append("opcion", 'cargarArchivo'); // En la posición 0; es decir, el primer elemento
         // fetch("cargues/cargues.php", {
-        fetch("cargues/cargar_stickers.php", {
+        fetch("cargues/cargar_stickers_integrin.php", {
             method: 'POST',
             body: formData,
         })
@@ -37,7 +37,7 @@ function realizarCargaArchivo()
                 document.getElementById("div_cargue_archivo").innerHTML = 'Cargue Realizado!!';
             });
     } else {
-        alert("Selecciona un archivo..");
+        alert("Selecciona un archivo de Integrin..");
     }
 }
 

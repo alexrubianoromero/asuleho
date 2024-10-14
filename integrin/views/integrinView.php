@@ -11,12 +11,12 @@ class integrinView
 
  public function __construct()
  {
-    $this->model= new TraductorModel(); 
+    $this->model= new IntegrinModel(); 
     // $this->tipoContriModel= new TipoContribuyenteModel(); 
  }   
  
 
- public function traductorMenu()
+ public function integrinMenu()
     {
         ?>
         <div  style="padding:5px;">
@@ -40,7 +40,7 @@ class integrinView
                     data-bs-toggle="modal" 
                     data-bs-target="#modalSubirArchivo"
                     class="btn btn-primary  float-right" 
-                    onclick="formularioSubirArchivo()"
+                    onclick="formularioSubirArchivoIntegrin()"
                     >
                         Subir Archivo
                     </button>
@@ -51,7 +51,7 @@ class integrinView
           
             <div id="divResultadosTraductor" class="mt-3">
                 <?php  
-                     $this->mostrarInfoTraductor();  
+                     $this->mostrarInfoIntegrin();  
                         
                 ?>
                 </div>
@@ -77,48 +77,55 @@ class integrinView
 
 
 
- public function mostrarInfoTraductor()
+ public function mostrarInfoIntegrin()
  {
-    $reglas = $this->model->traerRegistrostraductor();
+    $registros = $this->model->traerRegistrosIntegrin();
     echo '<table class="table table-striped">';
         echo '<tr>'; 
-        echo '<th>Tipo Nota Contable</th>';
-        echo '<th>Codigo_c</th>';
+        echo '<th>codpredio</th>';
+        echo '<th>nombre</th>';
+        echo '<th>uso</th>';
+        echo '<th>estrato</th>';
+        echo '<th>servicio</th>';
+        echo '<th>nservicio</th>';
+        echo '<th>codigo_c</th>';
         echo '<th>nconcep</th>';
-        echo '<th>cuentasWorldOffice</th>';
-        echo '<th>naturaleza</th>';
-        echo '<th>Nombre_de_la_empresa</th>';
-        echo '<th>periodo.</th>';
-        echo '<th>documentoNumero.</th>';
-        echo '<th>fechaFin	.</th>';
-        echo '<th>nota1.</th>';
-        echo '<th>documento.</th>';
-        echo '<th>tipoDocumento.</th>';
-        echo '<th>cedulaCarga.</th>';
-        echo '<th>nit.</th>';
-        echo '<th>sucursal.</th>';
-        echo '<th>nota2.</th>';
+        echo '<th>ult_0</th>';
+        echo '<th>ult_1</th>';
+        echo '<th>ult_2</th>';
+        echo '<th>ult_3</th>';
+        echo '<th>ult_4</th>';
+        echo '<th>ult_5</th>';
+        echo '<th>ult_6</th>';
+        echo '<th>ult_7</th>';
+        echo '<th>ult_8</th>';
+        echo '<th>int_t</th>';
+        echo '<th>ult_t</th>';
         echo '</tr>';
-        foreach($reglas as $regla)
+        foreach($registros as $registro)
         {
             // $tipoCont =  $this->tipoContriModel->traerTipoId($cliente['idTipoContribuyente']);
             echo '<tr>'; 
-            echo '<td>'.$regla['tipoNotaContable'].'</td>'; 
-            echo '<td>'.$regla['codigo_c'].'</td>'; 
-            echo '<td>'.$regla['nconcep'].'</td>'; 
-            echo '<td>'.$regla['cuentasWorldOffice'].'</td>'; 
-            echo '<td>'.$regla['naturaleza'].'</td>'; 
-            echo '<td>'.$regla['empresa'].'</td>'; 
-            echo '<td>'.$regla['periodo'].'</td>'; 
-            echo '<td>'.$regla['documentoNumero'].'</td>'; 
-            echo '<td>'.$regla['fechaFin'].'</td>'; 
-            echo '<td>'.$regla['nota1'].'</td>'; 
-            echo '<td>'.$regla['documento'].'</td>'; 
-            echo '<td>'.$regla['tipoDocumento'].'</td>'; 
-            echo '<td>'.$regla['cedulaCarga'].'</td>'; 
-            echo '<td>'.$regla['nit'].'</td>'; 
-            echo '<td>'.$regla['sucursal'].'</td>'; 
-            echo '<td>'.$regla['nota2'].'</td>'; 
+            echo '<td>'.$registro['codpredio'].'</td>'; 
+            echo '<td>'.$registro['nombre'].'</td>'; 
+            echo '<td>'.$registro['uso'].'</td>'; 
+            echo '<td>'.$registro['estrato'].'</td>'; 
+            echo '<td>'.$registro['servicio'].'</td>'; 
+            echo '<td>'.$registro['nservicio'].'</td>'; 
+            echo '<td>'.$registro['codigo_c'].'</td>'; 
+            echo '<td>'.$registro['nconcep'].'</td>'; 
+            echo '<td>'.$registro['ult_0'].'</td>'; 
+            echo '<td>'.$registro['ult_1'].'</td>'; 
+            echo '<td>'.$registro['ult_2'].'</td>'; 
+            echo '<td>'.$registro['ult_3'].'</td>'; 
+            echo '<td>'.$registro['ult_4'].'</td>'; 
+            echo '<td>'.$registro['ult_5'].'</td>'; 
+            echo '<td>'.$registro['ult_6'].'</td>'; 
+            echo '<td>'.$registro['ult_7'].'</td>'; 
+            echo '<td>'.$registro['ult_8'].'</td>'; 
+            echo '<td>'.$registro['int_t'].'</td>'; 
+            echo '<td>'.$registro['ult_t'].'</td>'; 
+           
             echo '</tr>';
         }
     echo '</table>';   
@@ -139,8 +146,8 @@ class integrinView
                  
              </div>
              <div class="modal-footer">
-                 <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="traductor();" >Cerrar</button>
-                 <button  type="button" class="btn btn-primary"  id="btnEnviar"  onclick="realizarCargaArchivo();" >SubirArchivo</button>
+                 <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="integrin();" >Cerrar</button>
+                 <button  type="button" class="btn btn-primary"  id="btnEnviar"  onclick="realizarCargaArchivoIntegrin();" >SubirArchivo</button>
              </div>
              </div>
          </div>
@@ -149,7 +156,7 @@ class integrinView
      <?php
  }
 
- public function formularioSubirArchivo()
+ public function formularioSubirArchivoIntegrin()
  {
      // echo 'subir archivo '; 
      ?>

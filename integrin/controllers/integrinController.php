@@ -21,19 +21,19 @@ class integrinController
             echo '<button class="btn btn-primary" onclick="irPantallaLogueo();">Continuar</button>';
             die();
         }
-        $this->view = new traductorView();
-        $this->model = new TraductorModel();
+        $this->view = new integrinView();
+        $this->model = new IntegrinModel();
         // $this->partesModel = new PartesModel();
         // $this->MovParteModel = new MovimientoParteModel();
 
-        if($_REQUEST['opcion']=='traductorMenu')
+        if($_REQUEST['opcion']=='integrinMenu')
         {
-            $this->view->traductorMenu();
+            $this->view->integrinMenu();
         }
 
-        if($_REQUEST['opcion']=='formularioSubirArchivo')
+        if($_REQUEST['opcion']=='formularioSubirArchivoIntegrin')
         {
-            $this->view->formularioSubirArchivo(); 
+            $this->view->formularioSubirArchivoIntegrin(); 
         }
         if($_REQUEST['opcion']=='listarClientes')
         {

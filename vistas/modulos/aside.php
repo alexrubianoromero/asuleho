@@ -62,7 +62,7 @@
 
                   
                     <li class="nav-item">
-                    <a style="cursor:pointer;" class="nav-link" onclick="hardwareMenuIntegrin();">
+                    <a style="cursor:pointer;" class="nav-link" onclick="integrin();">
                             <!-- <i class="nav-icon fas fa-th"></i> -->
                             <p>
                                 Cargue Integrin

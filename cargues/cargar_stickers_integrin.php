@@ -16,11 +16,9 @@ date_default_timezone_set('America/Bogota');
 $raiz =dirname(dirname(__file__));
 // die('rutacargar archivo '.$raiz);
 
-require_once($raiz.'/traductor/models/TraductorModel.php'); 
 require_once($raiz.'/integrin/models/IntegrinModel.php'); 
 
 
-$traductorModel = new TraductorModel(); 
 $integrinModel = new IntegrinModel(); 
 
 ?>
@@ -60,10 +58,6 @@ echo '</pre>';
  
         if($_FILES['file']['name'] != '')
         {
-            
-            $traductorModel->limpiarTablaTraductor();
-            $integrinModel->limpiarTablaIntegrin();
-            $traductorModel->limpiarTablaNombreArchivo();
            // require_once 'reader/Classes/PHPExcel/IOFactory.php';
 		   require_once '../Classes/PHPExcel/IOFactory.php';
  
@@ -167,6 +161,9 @@ echo '</pre>';
                     if($h == 'N'){$arreglo_mostrar[$v]['N'] = $cellValue; }
                     if($h == 'O'){$arreglo_mostrar[$v]['O'] = $cellValue; }
                     if($h == 'P'){$arreglo_mostrar[$v]['P'] = $cellValue; }
+                    if($h == 'Q'){$arreglo_mostrar[$v]['Q'] = $cellValue; }
+                    if($h == 'R'){$arreglo_mostrar[$v]['R'] = $cellValue; }
+                    if($h == 'S'){$arreglo_mostrar[$v]['S'] = $cellValue; }
 					//$arreglo_mostrar[$v][$h] = $cellValue; 
                     if($cellValue !== null){
                         $table .= $cellValue;
@@ -207,20 +204,22 @@ echo '</pre>';
                                     // $infoMarca =  $marcaModel->traerMarcaXMarca($am['G']);
 
                                     
-                                    $sql = "insert into traductor 
+                                    $sql = "insert into integrin 
                                     (
-                                        tipoNotaContable,codigo_c,nconcep,cuentasWorldOffice
-                                        ,naturaleza,empresa,periodo,documentoNumero
-                                        ,fechaFin	,nota1	,documento	,tipoDocumento
-                                        ,cedulaCarga	,nit,sucursal,nota2	
+                                        codpredio	,nombre	,uso,estrato
+                                        ,servicio ,nservicio	,codigo_c	,nconcep	
+                                        ,ult_0	,ult_1	,ult_2,ult_3	
+                                        ,ult_4	,ult_5	,ult_6,ult_7	
+                                        ,ult_8,int_t, ult_t		
                                     )
                                     values (
                                         '".$am['A']."','".$am['B']."','".$am['C']."','".$am['D']."'
                                         ,'".$am['E']."','".$am['F']."','".$am['G']."','".$am['H']."'
                                         ,'".$am['I']."','".$am['J']."','".$am['K']."','".$am['L']."'
                                         ,'".$am['M']."','".$am['N']."','".$am['O']."','".$am['P']."'
+                                        ,'".$am['Q']."','".$am['R']."','".$am['S']."'
                                     )"; 
-                                    //  die('llllllllllllllllllla consulta '.$sql); 
+                                    //  die('Consulta Integrin '.$sql); 
                                      $consulta = mysql_query($sql,$conexion); 
 									$i++;
                                     // if($i==2){die(); }
