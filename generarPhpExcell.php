@@ -79,10 +79,14 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('W')->setWidth(40);
 $objPHPExcel->getActiveSheet()->getColumnDimension('X')->setWidth(40);
 $objPHPExcel->getActiveSheet()->getColumnDimension('Y')->setWidth(40);
 $objPHPExcel->getActiveSheet()->getColumnDimension('Z')->setWidth(40);
-$objPHPExcel->getActiveSheet()->getColumnDimension('AB')->setWidth(25);
+$objPHPExcel->getActiveSheet()->getColumnDimension('AA')->setWidth(25);
+$objPHPExcel->getActiveSheet()->getColumnDimension('AB')->setWidth(30);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AC')->setWidth(25);
+$objPHPExcel->getActiveSheet()->getColumnDimension('AD')->setWidth(25);
+$objPHPExcel->getActiveSheet()->getColumnDimension('AE')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AF')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AG')->setWidth(25);
+$objPHPExcel->getActiveSheet()->getColumnDimension('AH')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AI')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AJ')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AK')->setWidth(25);
@@ -134,7 +138,7 @@ $objPHPExcel->getActiveSheet()->setCellValue('AF1', 'Detalle Con: Debito');
 $objPHPExcel->getActiveSheet()->setCellValue('AG1', 'Detalle Con: Credito');
 $objPHPExcel->getActiveSheet()->setCellValue('AH1', 'Detalle Con: Vencimiento');
 $objPHPExcel->getActiveSheet()->setCellValue('AI1', 'Detalle Con: Centro Costos');
-$objPHPExcel->getActiveSheet()->setCellValue('AJ1', 'Detalle Con: Actibo Fijo');
+$objPHPExcel->getActiveSheet()->setCellValue('AJ1', 'Detalle Con: Activo Fijo');
 $objPHPExcel->getActiveSheet()->setCellValue('AK1', 'Detalle Con: Tipo_Base');
 $objPHPExcel->getActiveSheet()->setCellValue('AL1', 'Detalle Con: Porcentaje_Retención');
 $objPHPExcel->getActiveSheet()->setCellValue('AM1', 'Detalle Con: BaseRetención');
@@ -158,9 +162,9 @@ foreach ($registrosIntegrin as $registroItegrin)
 {
     $traduccion = traerTraducccionXCodigoC($registroItegrin['codigo_c'],$conexion); 
     $empresa  = $traduccion['empresa'];
-    $verificar = verificasTraducccionXCodigoC($codigo,$conexion);
+    $verificar = verificasTraducccionXCodigoC($registroItegrin['codigo_c'],$conexion);
     if($verificar==0){
-        $empresa = 'CODIGO NO ENCONTRADO EN TRADUCTOR '; 
+        $empresa = 'CODIGO '.$registroItegrin['codigo_c'].' NO ENCONTRADO EN TRADUCTOR '; 
     }
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$i, $empresa);
         $objPHPExcel->getActiveSheet()->setCellValue('B'.$i, $traduccion['tipoDocumento']);
@@ -168,7 +172,11 @@ foreach ($registrosIntegrin as $registroItegrin)
         $objPHPExcel->getActiveSheet()->setCellValue('D'.$i, $traduccion['documentoNumero']);
         $ano = substr($traduccion['periodo'],0,2);
         $mes = substr($traduccion['periodo'],3,2);
-        $objPHPExcel->getActiveSheet()->setCellValue('E'.$i, '01-'.$mes.'-20'.$ano );
+        if($verificar==0){
+            $objPHPExcel->getActiveSheet()->setCellValue('E'.$i, '');
+         }else{
+             $objPHPExcel->getActiveSheet()->setCellValue('E'.$i, '01-'.$mes.'-20'.$ano );
+         }
         $objPHPExcel->getActiveSheet()->setCellValue('F'.$i,$traduccion['cedulaCarga']);
         $objPHPExcel->getActiveSheet()->setCellValue('G'.$i, $traduccion['nit']);
         $objPHPExcel->getActiveSheet()->setCellValue('H'.$i, $traduccion['tipoNotaContable']);
@@ -265,11 +273,132 @@ foreach ($registrosIntegrin as $registroItegrin)
         $objPHPExcel->getActiveSheet()->setCellValue('AV'.$i, '');
 
         
+        if($traduccion['nota1']=='FACTURACION RIEGO' || $traduccion['nota1']=='FACTURACION DERECHOS INACTIVOS'  ){
+            //duplique el registro como debito por el mismo valor y cuentaTotal
+            $i=$i+1;
+            $objPHPExcel->getActiveSheet()->setCellValue('A'.$i, $empresa);
+            $objPHPExcel->getActiveSheet()->setCellValue('B'.$i, $traduccion['tipoDocumento']);
+            $objPHPExcel->getActiveSheet()->setCellValue('C'.$i, $traduccion['periodo']);
+            $objPHPExcel->getActiveSheet()->setCellValue('D'.$i, $traduccion['documentoNumero']);
+            $ano = substr($traduccion['periodo'],0,2);
+            $mes = substr($traduccion['periodo'],3,2);
+            $objPHPExcel->getActiveSheet()->setCellValue('E'.$i, '01-'.$mes.'-20'.$ano );
+            $objPHPExcel->getActiveSheet()->setCellValue('F'.$i,$traduccion['cedulaCarga']);
+            $objPHPExcel->getActiveSheet()->setCellValue('G'.$i, $traduccion['nit']);
+            $objPHPExcel->getActiveSheet()->setCellValue('H'.$i, $traduccion['tipoNotaContable']);
+              //     $objPHPExcel->getActiveSheet()->setCellValue('I'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('J'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('K'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('L'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('M'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('N'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('O'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('P'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('Q'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('R'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('S'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('T'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('U'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('V'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('W'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('X'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('Y'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('Z'.$i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('AA'.$i, '');
+            $cuentaWorldOffice = $traduccion['cuentaTotal'];
+            $objPHPExcel->getActiveSheet()->setCellValue('AB'.$i, $cuentaWorldOffice);
+            $objPHPExcel->getActiveSheet()->setCellValue('AC'.$i, $traduccion['nota2']);
+            
+                $primeros6CaracteresCodPredio = substr($registroItegrin['codpredio'],0,6); 
+                $primeros4CaracteresCodPredio = substr($registroItegrin['codpredio'],0,4); 
+                $caracterNumero6 = substr($registroItegrin['codpredio'],5,1); 
+                if($caracterNumero6 == '0'){
+                    $codTercero = $primeros4CaracteresCodPredio;
+                }else{
+                    $codTercero = $primeros6CaracteresCodPredio;
+                }
+                $objPHPExcel->getActiveSheet()->setCellValue('AD'.$i,$codTercero);
+                $objPHPExcel->getActiveSheet()->setCellValue('AE'.$i, '');
+                $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
+                
+                    $objPHPExcel->getActiveSheet()->setCellValue('AH'.$i, $traduccion['fechaFin']);
+                    $objPHPExcel->getActiveSheet()->setCellValue('AI'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AJ'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AK'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AL'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AM'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AN'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AO'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AP'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AQ'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AR'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AS'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AT'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AU'.$i, '');
+                    $objPHPExcel->getActiveSheet()->setCellValue('AV'.$i, '');
+       } //fiin de duplicar registro 
 
 
 
     $i++;        
 }//fin de foreach
+
+//////////////
+function duplicarResgistroComoDebito($registroItegrin,$cuentaTotal,$conexion,$i)
+{
+   
+   
+  
+    //     
+    //     switch ($traduccion['naturaleza']) 
+    //     {
+    //         case 'CR':
+    //             {
+    //                 $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
+    //                 $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
+    //                 // echo '<td>0</td>';
+    //                 // echo '<td>'.$registroItegrin['ult_t'].'</td>';
+    //                 break;
+                    
+    //             }
+    //             case 'DB':
+    //                 {
+    //                     $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']);
+    //                     $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
+    //                     // echo '<td>'.$registroItegrin['ult_t'].'</td>';
+    //                     // echo '<td>0</td>';
+    //                     break;
+    //                 }
+    //                 case 0:
+    //                 {
+    //                         if($registroItegrin['ult_t'] > 0)
+    //                         {
+                                
+    //                             $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
+    //                             // $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']*(-1));
+    //                             $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
+    //                             // echo '<td>0</td>';
+    //                             // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
+    //                             break;
+    //                         }else{
+    //                             $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']*(-1));
+    //                             $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
+    //                             // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
+    //                             // echo '<td>0</td>';
+    //                             break;
+    //                         }
+                            
+    //                 }
+                    
+    //     } //fin de switch
+
+}
+
+
+/////////////
+
+
 
 // Guardar el archivo Excel en formato .xlsx
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
@@ -279,5 +408,9 @@ header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetm
 header('Content-Disposition: attachment;filename="archivo.xlsx"');
 header('Cache-Control: max-age=0');
 $objWriter->save('php://output');
+
+
+
+
 
 ?>

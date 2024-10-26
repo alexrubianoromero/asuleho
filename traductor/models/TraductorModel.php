@@ -7,6 +7,16 @@ require_once($raiz.'/conexion/Conexion.php');
 
 class TraductorModel extends Conexion
 {
+
+    function verificasTraducccionXCodigoC($codigo)
+    {
+        $sql = "select * from traductor  where codigo_c = '".$codigo."'  ";
+        // die($sql); 
+        $consulta = mysql_query($sql,$this->connectMysql());
+        $traductor = mysql_fetch_assoc($consulta);
+        $filas = mysql_num_rows($consulta); 
+        return $filas;
+    }
     public function traerRegistrostraductor()
     {
         $sql = "select * from traductor ";

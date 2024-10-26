@@ -53,15 +53,25 @@ class archivoWorldOfficeController
        foreach ($registrosIntegrin as $registroItegrin)
        {
            $traduccion = $this->traductorModel->traerTraducccionXCodigoC($registroItegrin['codigo_c']); 
+           $empresa  = $traduccion['empresa'];
+           $verificar = $this->traductorModel->verificasTraducccionXCodigoC($registroItegrin['codigo_c']);
+           if($verificar==0){
+               $empresa = 'CODIGO '.$registroItegrin['codigo_c'].' NO ENCONTRADO EN TRADUCTOR '; 
+           }
            echo '<tr>'; 
            echo '<td>'.$i.'</td>';
-           echo '<td>'.$traduccion['empresa'].'</td>';
+           echo '<td>'.$empresa.'</td>';
            echo '<td>'.$traduccion['tipoDocumento'].'</td>';
            echo '<td>'.$traduccion['periodo'].'</td>';
            echo '<td>'.$traduccion['documentoNumero'].'</td>';
            $ano = substr($traduccion['periodo'],0,2);
            $mes = substr($traduccion['periodo'],3,2);
-           echo '<td>01-'.$mes.'-20'.$ano .'</td>';
+           if($verificar==0){
+               echo '<td></td>';
+            }else{
+                echo '<td>01-'.$mes.'-20'.$ano .'</td>';
+            }
+
            echo '<td>'.$traduccion['cedulaCarga'].'</td>';
            echo '<td>'.$traduccion['nit'].'</td>';
            echo '<td>'.$traduccion['tipoNotaContable'].'</td>';
