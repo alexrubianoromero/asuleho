@@ -52,10 +52,7 @@ $nombrebase = "base_summers";
 */
 
 
-$servidor = "localhost";
-$usuario = "";
-$clave  = "";
-$nombrebase = "";
+
 
 
 $conexion =mysql_connect($servidor,$usuario,$clave);

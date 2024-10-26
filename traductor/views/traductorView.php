@@ -86,6 +86,7 @@ class traductorView
         echo '<th>Codigo_c</th>';
         echo '<th>nconcep</th>';
         echo '<th>cuentasWorldOffice</th>';
+        echo '<th>cuentaSecundariaWorldOffice</th>';
         echo '<th>naturaleza</th>';
         echo '<th>Nombre_de_la_empresa</th>';
         echo '<th>periodo.</th>';
@@ -98,6 +99,7 @@ class traductorView
         echo '<th>nit.</th>';
         echo '<th>sucursal.</th>';
         echo '<th>nota2.</th>';
+        echo '<th>cuenta total</th>';
         echo '</tr>';
         foreach($reglas as $regla)
         {
@@ -107,6 +109,7 @@ class traductorView
             echo '<td>'.$regla['codigo_c'].'</td>'; 
             echo '<td>'.$regla['nconcep'].'</td>'; 
             echo '<td>'.$regla['cuentasWorldOffice'].'</td>'; 
+            echo '<td>'.$regla['cuentaSecundariaWorldOffice'].'</td>'; 
             echo '<td>'.$regla['naturaleza'].'</td>'; 
             echo '<td>'.$regla['empresa'].'</td>'; 
             echo '<td>'.$regla['periodo'].'</td>'; 
@@ -119,6 +122,7 @@ class traductorView
             echo '<td>'.$regla['nit'].'</td>'; 
             echo '<td>'.$regla['sucursal'].'</td>'; 
             echo '<td>'.$regla['nota2'].'</td>'; 
+            echo '<td>'.$regla['cuentaTotal'].'</td>'; 
             echo '</tr>';
         }
     echo '</table>';   

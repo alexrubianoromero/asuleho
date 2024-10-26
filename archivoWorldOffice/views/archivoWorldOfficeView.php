@@ -16,7 +16,7 @@ class archivoWorldOfficeView
  }   
  
 
- public function integrinMenu()
+ public function worldOfficeMenu()
     {
         ?>
         <div  style="padding:5px;">
@@ -36,14 +36,7 @@ class archivoWorldOfficeView
                     </button>
                 </div> -->
                 <div class="col-lg-2">
-                    <button type="button" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#modalSubirArchivo"
-                    class="btn btn-primary  float-right" 
-                    onclick="formularioSubirArchivoIntegrin()"
-                    >
-                        Subir Archivo
-                    </button>
+                  <a role="button" class="btn btn-primary"  href="generarExcell.php" target="_blank">Generar Archivo Excell</a>
                 </div>
              
 
@@ -51,7 +44,7 @@ class archivoWorldOfficeView
           
             <div id="divResultadosTraductor" class="mt-3">
                 <?php  
-                     $this->mostrarInfoIntegrin();  
+                    //  $this->mostrarInfoIntegrin();  
                         
                 ?>
                 </div>
@@ -75,61 +68,6 @@ class archivoWorldOfficeView
         <?php
     }
 
-
-
- public function mostrarInfoIntegrin()
- {
-    $registros = $this->model->traerRegistrosIntegrin();
-    echo '<table class="table table-striped">';
-        echo '<tr>'; 
-        echo '<th>codpredio</th>';
-        echo '<th>nombre</th>';
-        echo '<th>uso</th>';
-        echo '<th>estrato</th>';
-        echo '<th>servicio</th>';
-        echo '<th>nservicio</th>';
-        echo '<th>codigo_c</th>';
-        echo '<th>nconcep</th>';
-        echo '<th>ult_0</th>';
-        echo '<th>ult_1</th>';
-        echo '<th>ult_2</th>';
-        echo '<th>ult_3</th>';
-        echo '<th>ult_4</th>';
-        echo '<th>ult_5</th>';
-        echo '<th>ult_6</th>';
-        echo '<th>ult_7</th>';
-        echo '<th>ult_8</th>';
-        echo '<th>int_t</th>';
-        echo '<th>ult_t</th>';
-        echo '</tr>';
-        foreach($registros as $registro)
-        {
-            // $tipoCont =  $this->tipoContriModel->traerTipoId($cliente['idTipoContribuyente']);
-            echo '<tr>'; 
-            echo '<td>'.$registro['codpredio'].'</td>'; 
-            echo '<td>'.$registro['nombre'].'</td>'; 
-            echo '<td>'.$registro['uso'].'</td>'; 
-            echo '<td>'.$registro['estrato'].'</td>'; 
-            echo '<td>'.$registro['servicio'].'</td>'; 
-            echo '<td>'.$registro['nservicio'].'</td>'; 
-            echo '<td>'.$registro['codigo_c'].'</td>'; 
-            echo '<td>'.$registro['nconcep'].'</td>'; 
-            echo '<td>'.$registro['ult_0'].'</td>'; 
-            echo '<td>'.$registro['ult_1'].'</td>'; 
-            echo '<td>'.$registro['ult_2'].'</td>'; 
-            echo '<td>'.$registro['ult_3'].'</td>'; 
-            echo '<td>'.$registro['ult_4'].'</td>'; 
-            echo '<td>'.$registro['ult_5'].'</td>'; 
-            echo '<td>'.$registro['ult_6'].'</td>'; 
-            echo '<td>'.$registro['ult_7'].'</td>'; 
-            echo '<td>'.$registro['ult_8'].'</td>'; 
-            echo '<td>'.$registro['int_t'].'</td>'; 
-            echo '<td>'.$registro['ult_t'].'</td>'; 
-           
-            echo '</tr>';
-        }
-    echo '</table>';   
- }
 
  public function modalSubirArchivo()
  {
@@ -156,24 +94,6 @@ class archivoWorldOfficeView
      <?php
  }
 
- public function formularioSubirArchivoIntegrin()
- {
-     // echo 'subir archivo '; 
-     ?>
-     <div id="div_cargue_archivo">
-             <input name="imagen" id="imagen" type="file">
-             <br><br><br><br>
-             <!-- <button onclick="procesarformu();" >Procesar</button> -->
-             <br><br>
-             <!-- <button id="btnEnviar">Enviar!!</button> -->
-             <!-- </form> -->
-             <div id="div_muestre_resultado"></div>
-             <span id="demo"></span>
-     </div>
-     
-     <?php
-
- }
 
 
 

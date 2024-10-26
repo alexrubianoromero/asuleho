@@ -28,7 +28,7 @@ class TraductorModel extends Conexion
 
     public function traerTraducccionXCodigoC($codigo)
     {
-        $sql = "select * from traductor  where codigo_c = '".$codigo."' ";
+        $sql = "select * from traductor  where codigo_c = '".$codigo."'  ";
         // die($sql); 
         $consulta = mysql_query($sql,$this->connectMysql());
         $traductor = mysql_fetch_assoc($consulta);

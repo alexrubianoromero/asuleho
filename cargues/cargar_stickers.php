@@ -167,6 +167,8 @@ echo '</pre>';
                     if($h == 'N'){$arreglo_mostrar[$v]['N'] = $cellValue; }
                     if($h == 'O'){$arreglo_mostrar[$v]['O'] = $cellValue; }
                     if($h == 'P'){$arreglo_mostrar[$v]['P'] = $cellValue; }
+                    if($h == 'Q'){$arreglo_mostrar[$v]['Q'] = $cellValue; }
+                    if($h == 'R'){$arreglo_mostrar[$v]['R'] = $cellValue; }
 					//$arreglo_mostrar[$v][$h] = $cellValue; 
                     if($cellValue !== null){
                         $table .= $cellValue;
@@ -209,16 +211,17 @@ echo '</pre>';
                                     
                                     $sql = "insert into traductor 
                                     (
-                                        tipoNotaContable,codigo_c,nconcep,cuentasWorldOffice
+                                        tipoNotaContable,codigo_c,nconcep,cuentasWorldOffice,cuentaSecundariaWorldOffice
                                         ,naturaleza,empresa,periodo,documentoNumero
                                         ,fechaFin	,nota1	,documento	,tipoDocumento
-                                        ,cedulaCarga	,nit,sucursal,nota2	
+                                        ,cedulaCarga	,nit,sucursal,nota2,cuentaTotal	
                                     )
                                     values (
                                         '".$am['A']."','".$am['B']."','".$am['C']."','".$am['D']."'
                                         ,'".$am['E']."','".$am['F']."','".$am['G']."','".$am['H']."'
                                         ,'".$am['I']."','".$am['J']."','".$am['K']."','".$am['L']."'
                                         ,'".$am['M']."','".$am['N']."','".$am['O']."','".$am['P']."'
+                                        ,'".$am['Q']."','".$am['R']."'
                                     )"; 
                                     //  die('llllllllllllllllllla consulta '.$sql); 
                                      $consulta = mysql_query($sql,$conexion); 
