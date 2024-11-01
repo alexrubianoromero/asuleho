@@ -58,7 +58,7 @@ function menuPrincipal(){
     );
 }
 function irPantallaLogueo(){
-    location.href ='http://www.alexrubiano.com/inventarios';
+    location.href ='http://www.alexrubiano.com/asuleho';
 }
 
 function salir()

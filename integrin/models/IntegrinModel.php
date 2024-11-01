@@ -9,7 +9,7 @@ class IntegrinModel extends Conexion
 {
     public function traerRegistrosIntegrin()
     {
-        $sql = "select * from integrin limit 400";
+        $sql = "select * from integrin ";
         $consulta = mysql_query($sql,$this->connectMysql());
         $parametros = $this->get_table_assoc($consulta);
         return $parametros;

@@ -179,11 +179,11 @@ class usersView
                 </div>
                 <label>Digite clave Anterior</label>
                 <div>
-                    <input class="form-control" type="text" id="claveAnterior"  >
+                    <input class="form-control" type="password" id="claveAnterior"  >
                 </div>
                 <label>Digite nueva clave</label>
                 <div>
-                    <input class="form-control"  type="text" id="nuevaClave"  >
+                    <input class="form-control"  type="password" id="nuevaClave"  >
                 </div>
                 <div class="mt-3">
                     <button class="btn btn-primary btn-block" onclick = "realizarCambiarClaveUsuario();" >Cambiar Clave</button>

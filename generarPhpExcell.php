@@ -24,7 +24,7 @@ function traerTraducccionXCodigoC($codigo,$conexion)
 }
 function traerRegistrosIntegrin($conexion)
 {
-    $sql = "select * from integrin limit 400";
+    $sql = "select * from integrin ";
     $consulta = mysql_query($sql,$conexion);
     $parametros = get_table_assoc($consulta);
     return $parametros;
@@ -41,17 +41,9 @@ function get_table_assoc($datos)
     return $arreglo_assoc;
 }
 
-///////////
 
-
-// Crear un nuevo objeto PHPExcel
 $objPHPExcel = new PHPExcel();
-//seleccionar la primera hoja de trabajo 
 $objPHPExcel->setActiveSheetIndex(0);
-
-
-// Escribir datos en la hoja de calculo
-// $objPHPExcel->getColumnDimension('A')->setWidth(20);
 $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(60);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -101,8 +93,6 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('AS')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AT')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AU')->setWidth(25);
 $objPHPExcel->getActiveSheet()->getColumnDimension('AV')->setWidth(25);
-
-
 $objPHPExcel->getActiveSheet()->setCellValue("A1", 'Encab: Empresa');
 $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Encab: Tipo Documento');
 $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Encab: Prefijo');
@@ -152,11 +142,6 @@ $objPHPExcel->getActiveSheet()->setCellValue('AT1', 'Detalle Con: ImpoConsumoCos
 $objPHPExcel->getActiveSheet()->setCellValue('AU1', 'Detalle Con: No Deducible');
 $objPHPExcel->getActiveSheet()->setCellValue('AV1', 'Detalle Con: Código Centro Costos');
 
-///////////////////////////
-
-
-
-
 $i=2; 
 foreach ($registrosIntegrin as $registroItegrin)
 {
@@ -200,7 +185,7 @@ foreach ($registrosIntegrin as $registroItegrin)
         $objPHPExcel->getActiveSheet()->setCellValue('Z'.$i, '');
         $objPHPExcel->getActiveSheet()->setCellValue('AA'.$i, '');
         $cuentaWorldOffice = $traduccion['cuentasWorldOffice'];
-        if(floatval($registroItegrin['ult_t']) < 0){
+        if(floatval($registroItegrin['ult_0']) < 0){
             $cuentaWorldOffice = $traduccion['cuentaSecundariaWorldOffice'];
         }
         $objPHPExcel->getActiveSheet()->setCellValue('AB'.$i, $cuentaWorldOffice);
@@ -220,33 +205,29 @@ foreach ($registrosIntegrin as $registroItegrin)
             case 'CR':
                 {
                     $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
-                    $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
-                    // echo '<td>0</td>';
-                    // echo '<td>'.$registroItegrin['ult_t'].'</td>';
+                    $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_0']);
                     break;
                     
                 }
                 case 'DB':
                     {
-                        $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']);
+                        $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_0']);
                         $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
-                        // echo '<td>'.$registroItegrin['ult_t'].'</td>';
-                        // echo '<td>0</td>';
                         break;
                     }
                     case 0:
                     {
-                            if($registroItegrin['ult_t'] > 0)
+                            if($registroItegrin['ult_0'] > 0)
                             {
                                 
                                 $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
                                 // $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']*(-1));
-                                $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
+                                $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_0']);
                                 // echo '<td>0</td>';
                                 // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
                                 break;
                             }else{
-                                $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']*(-1));
+                                $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_0']*(-1));
                                 $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
                                 // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
                                 // echo '<td>0</td>';
@@ -319,7 +300,7 @@ foreach ($registrosIntegrin as $registroItegrin)
                 }
                 $objPHPExcel->getActiveSheet()->setCellValue('AD'.$i,$codTercero);
                 $objPHPExcel->getActiveSheet()->setCellValue('AE'.$i, '');
-                $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_0']);
                 $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
                 
                     $objPHPExcel->getActiveSheet()->setCellValue('AH'.$i, $traduccion['fechaFin']);
@@ -344,59 +325,6 @@ foreach ($registrosIntegrin as $registroItegrin)
     $i++;        
 }//fin de foreach
 
-//////////////
-function duplicarResgistroComoDebito($registroItegrin,$cuentaTotal,$conexion,$i)
-{
-   
-   
-  
-    //     
-    //     switch ($traduccion['naturaleza']) 
-    //     {
-    //         case 'CR':
-    //             {
-    //                 $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
-    //                 $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
-    //                 // echo '<td>0</td>';
-    //                 // echo '<td>'.$registroItegrin['ult_t'].'</td>';
-    //                 break;
-                    
-    //             }
-    //             case 'DB':
-    //                 {
-    //                     $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']);
-    //                     $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
-    //                     // echo '<td>'.$registroItegrin['ult_t'].'</td>';
-    //                     // echo '<td>0</td>';
-    //                     break;
-    //                 }
-    //                 case 0:
-    //                 {
-    //                         if($registroItegrin['ult_t'] > 0)
-    //                         {
-                                
-    //                             $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, 0);
-    //                             // $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']*(-1));
-    //                             $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, $registroItegrin['ult_t']);
-    //                             // echo '<td>0</td>';
-    //                             // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
-    //                             break;
-    //                         }else{
-    //                             $objPHPExcel->getActiveSheet()->setCellValue('AF'.$i, $registroItegrin['ult_t']*(-1));
-    //                             $objPHPExcel->getActiveSheet()->setCellValue('AG'.$i, 0);
-    //                             // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
-    //                             // echo '<td>0</td>';
-    //                             break;
-    //                         }
-                            
-    //                 }
-                    
-    //     } //fin de switch
-
-}
-
-
-/////////////
 
 
 

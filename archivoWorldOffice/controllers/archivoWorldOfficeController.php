@@ -97,7 +97,7 @@ class archivoWorldOfficeController
            //recorrer el campo y si encuentra un menos es negativo
 
             $cuentaWorldOffice = $traduccion['cuentasWorldOffice'];
-                if(floatval($registroItegrin['ult_t']) < 0){
+                if(floatval($registroItegrin['ult_0']) < 0){
                     $cuentaWorldOffice = $traduccion['cuentaSecundariaWorldOffice'];
                 }
            echo '<td>'.$cuentaWorldOffice .'</td>';
@@ -118,26 +118,26 @@ class archivoWorldOfficeController
                 case 'CR':
                     {
                         echo '<td>0</td>';
-                        echo '<td>'.$registroItegrin['ult_t'].'</td>';
+                        echo '<td>'.$registroItegrin['ult_0'].'</td>';
                         break;
                         
                     }
                     case 'DB':
                         {
-                            echo '<td>'.$registroItegrin['ult_t'].'</td>';
+                            echo '<td>'.$registroItegrin['ult_0'].'</td>';
                             echo '<td>0</td>';
                             break;
                         }
                     case 0:
                         {
-                             if($registroItegrin['ult_t'] > 0)
+                             if($registroItegrin['ult_0'] > 0)
                             {
                                 echo '<td>0</td>';
                                 // echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
-                                echo '<td>'.$registroItegrin['ult_t'].'</td>';
+                                echo '<td>'.$registroItegrin['ult_0'].'</td>';
                                 break;
                             }else{
-                                 echo '<td>'.$registroItegrin['ult_t']*(-1).'</td>';
+                                 echo '<td>'.$registroItegrin['ult_0']*(-1).'</td>';
                                 //  echo '<td>'.$registroItegrin['ult_t'].'</td>';
                                 echo '<td>0</td>';
                                 break;
@@ -226,7 +226,7 @@ class archivoWorldOfficeController
          echo '<td>'.$codTercero.'</td>';
          echo '<td></td>'; 
                
-            echo '<td>'.$registroItegrin['ult_t'].'</td>';
+            echo '<td>'.$registroItegrin['ult_0'].'</td>';
             echo '<td>0</td>';
 
              echo '<td>'.$traduccion['fechaFin'].'</td>';
